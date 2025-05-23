@@ -93,7 +93,7 @@ export const cacheChunk = async ({
   chunkBucket: Store<Chunk>;
   chunkQueue: Queue;
 }) => {
-  const cacheControlHeader = `${res.getHeader("Cache-Control") || ""}`;
+  const cacheControlHeader = `${res.getHeader("CDN-Cache-Control") || res.getHeader("Cache-Control") || ""}`;
   const cacheControl = cacheControlParser(cacheControlHeader);
 
   if (!shouldCache(cacheControl)) return;
